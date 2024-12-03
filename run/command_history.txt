@@ -1,0 +1,5 @@
+/time set 3000
+/locate biome plains
+/tp @s -192 99 291
+/kill @e[type=!minecraft:player]
+/setblock -166 75 313 machines_of_madness:item_pipe
