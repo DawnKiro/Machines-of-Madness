@@ -20,4 +20,9 @@ public class CheatMachine extends Machine {
     public MapCodec<CheatMachine> codec() {
         return CODEC;
     }
+
+    @Override
+    public void tick() {
+
+    }
 }

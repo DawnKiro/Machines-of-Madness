@@ -2,22 +2,12 @@ package net.voxelden.machinesOfMadness.factory.machine;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import net.voxelden.machinesOfMadness.util.Tickable;
 
-import java.util.function.Function;
-
-public abstract class Machine {
-    public static final Codec<Machine> TYPE_CODEC = MachineRegistry.REGISTRY.getCodec().dispatch(Machine::codec, Function.identity());
-    private boolean ticked = false;
+public abstract class Machine implements Tickable {
+    public static final Codec<Machine> TYPE_CODEC = MachineRegistry.REGISTRY.getCodec().dispatch(Machine::codec, MapCodec::codec);
 
     public abstract MapCodec<? extends Machine> codec();
-
-    public boolean canTick() {
-        return !ticked;
-    }
-
-    public void tick() {
-        ticked = true;
-    }
 
     public interface Holder {
         Machine getMachine();

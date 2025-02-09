@@ -49,12 +49,12 @@ public abstract class AbstractPipeBlock extends Block {
     }
 
     @Override
-    protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return shapeMap.get(state);
     }
 
     @Override
-    protected BlockState rotate(BlockState state, BlockRotation rotation) {
+    public BlockState rotate(BlockState state, BlockRotation rotation) {
         return switch (rotation) {
             case CLOCKWISE_180 ->
                     state.with(NORTH_CONNECTION, state.get(SOUTH_CONNECTION)).with(EAST_CONNECTION, state.get(WEST_CONNECTION)).with(SOUTH_CONNECTION, state.get(NORTH_CONNECTION)).with(WEST_CONNECTION, state.get(EAST_CONNECTION));
@@ -67,7 +67,7 @@ public abstract class AbstractPipeBlock extends Block {
     }
 
     @Override
-    protected BlockState mirror(BlockState state, BlockMirror mirror) {
+    public BlockState mirror(BlockState state, BlockMirror mirror) {
         return switch (mirror) {
             case LEFT_RIGHT ->
                     state.with(NORTH_CONNECTION, state.get(SOUTH_CONNECTION)).with(SOUTH_CONNECTION, state.get(NORTH_CONNECTION));
@@ -110,9 +110,13 @@ public abstract class AbstractPipeBlock extends Block {
         }
 
         public enum Type implements StringIdentifiable {
-            ITEM("none", object -> object instanceof ItemStack),
-            FLUID("normal", object -> false),
-            ENERGY("push", object -> false);
+            ITEM("item", object -> object instanceof ItemStack),
+            FLUID("fluid", object -> false),
+            ENERGY("energy", object -> false),
+            GAS("gas", object -> false),
+            PLASMA("plasma", object -> false),
+            QUANTUM("quantum", object -> false),
+            ALL("all", object -> !QUANTUM.canTransfer(object));
 
             private final String name;
             private final Predicate<Object> predicate;

@@ -3,48 +3,28 @@ package net.voxelden.machinesOfMadness.factory;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.voxelden.machinesOfMadness.factory.machine.Machine;
+import net.voxelden.machinesOfMadness.util.Tickable;
+import net.voxelden.machinesOfMadness.util.TickableConcurrentHashMap;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
-public class Factory {
+public record Factory(TickableConcurrentHashMap<Machine> machines, TickableConcurrentHashMap<Connection> connections) implements Tickable {
     public static final Codec<Factory> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-            Machine.TYPE_CODEC.listOf().fieldOf("machines").forGetter(Factory::machines),
-            Connection.CODEC.listOf().fieldOf("connections").forGetter(Factory::connections)
+            TickableConcurrentHashMap.codecOf(Machine.TYPE_CODEC).fieldOf("machines").forGetter(Factory::machines),
+            TickableConcurrentHashMap.codecOf(Connection.CODEC).fieldOf("connections").forGetter(Factory::connections)
     ).apply(instance, Factory::new));
 
-    private final List<Machine> machines;
-    private final List<Connection> connections;
-
     public Factory() {
-        this(List.of(), List.of());
+        this(Map.of(), Map.of());
     }
 
-    public Factory(List<Machine> machines, List<Connection> connections) {
-        this.machines = machines;
-        this.connections = connections;
+    public Factory(Map<UUID, Machine> machines, Map<UUID, Connection> connections) {
+        this(new TickableConcurrentHashMap<>(machines), new TickableConcurrentHashMap<>(connections));
     }
 
     public void tick() {
-        ArrayList<Machine> tickingMachines = new ArrayList<>(machines);
-
-        boolean needsTick = true;
-        while (needsTick) {
-            needsTick = false;
-            for (Machine machine : tickingMachines) {
-                if (machine.canTick()) {
-                    machine.tick();
-                    needsTick = true;
-                }
-            }
-        }
-    }
-
-    private List<Machine> machines() {
-        return machines;
-    }
-
-    private List<Connection> connections() {
-        return connections;
+        machines.tick();
+        connections.tick();
     }
 }

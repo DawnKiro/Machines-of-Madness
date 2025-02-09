@@ -1,16 +1,19 @@
 package net.voxelden.machinesOfMadness.factory;
 
+import net.minecraft.server.MinecraftServer;
+
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class FactoryThread {
+public class FactoryThread implements AutoCloseable {
     private static final ScheduledExecutorService EXECUTOR_SERVICE = Executors.newSingleThreadScheduledExecutor();
     private static final int TICK_RATE = 1000 / 20;
 
-    public static final FactoryHolder FACTORIES = new FactoryHolder();
+    public static FactoryHolder FACTORIES;
 
-    public static void start() {
+    public static void start(MinecraftServer server) {
+        FACTORIES = FactoryHolder.get(server);
         EXECUTOR_SERVICE.scheduleAtFixedRate(FactoryThread::tick, TICK_RATE, TICK_RATE, TimeUnit.MILLISECONDS);
     }
 
@@ -18,7 +21,12 @@ public class FactoryThread {
         EXECUTOR_SERVICE.shutdown();
     }
 
+    @Override
+    public void close() {
+        stop();
+    }
+
     public static void tick() {
-        System.out.println("Tick at " + System.currentTimeMillis());
+        FACTORIES.tick();
     }
 }

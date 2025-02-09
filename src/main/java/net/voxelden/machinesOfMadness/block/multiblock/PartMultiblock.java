@@ -20,22 +20,22 @@ public class PartMultiblock extends Block {
     }
 
     @Override
-    protected int getOpacity(BlockState state, BlockView world, BlockPos pos) {
+    public int getOpacity(BlockState state, BlockView world, BlockPos pos) {
         return world.getMaxLightLevel();
     }
 
     @Override
-    protected BlockRenderType getRenderType(BlockState state) {
+    public BlockRenderType getRenderType(BlockState state) {
         return state.get(ACTIVE) ? BlockRenderType.INVISIBLE : BlockRenderType.MODEL;
     }
 
     @Override
-    protected boolean hasSidedTransparency(BlockState state) {
+    public boolean hasSidedTransparency(BlockState state) {
         return state.get(ACTIVE);
     }
 
     @Override
-    protected VoxelShape getCullingShape(BlockState state, BlockView world, BlockPos pos) {
+    public VoxelShape getCullingShape(BlockState state, BlockView world, BlockPos pos) {
         return state.get(ACTIVE) ? VoxelShapes.empty() : VoxelShapes.fullCube();
     }
 

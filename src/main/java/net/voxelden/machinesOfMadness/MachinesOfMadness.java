@@ -1,8 +1,10 @@
 package net.voxelden.machinesOfMadness;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.util.Identifier;
 import net.voxelden.machinesOfMadness.block.Blocks;
+import net.voxelden.machinesOfMadness.factory.FactoryThread;
 import net.voxelden.machinesOfMadness.factory.machine.MachineRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +29,9 @@ public class MachinesOfMadness implements ModInitializer {
 
         MachineRegistry.register();
         Blocks.register();
+
+        ServerLifecycleEvents.SERVER_STARTED.register(FactoryThread::start);
+        ServerLifecycleEvents.SERVER_STOPPING.register(server -> FactoryThread.stop());
     }
 
     public static Identifier id(String name) {
