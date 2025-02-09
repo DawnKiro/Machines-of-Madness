@@ -3,11 +3,14 @@ package net.voxelden.machinesOfMadness;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 import net.voxelden.machinesOfMadness.block.Blocks;
+import net.voxelden.machinesOfMadness.factory.machine.MachineRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Random;
+
 public class MachinesOfMadness implements ModInitializer {
-    public static final String MOD_ID = "machines_of_madness";
+    public static final String MOD_ID = "mm";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
     public static final Random RANDOM = new Random();
@@ -22,6 +25,7 @@ public class MachinesOfMadness implements ModInitializer {
     public void onInitialize() {
         LOGGER.info(INIT_LOGS[RANDOM.nextInt(INIT_LOGS.length - 1)]);
 
+        MachineRegistry.register();
         Blocks.register();
     }
 

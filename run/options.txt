@@ -15,7 +15,7 @@ prioritizeChunkUpdates:0
 fullscreen:false
 gamma:0.5
 graphicsMode:1
-guiScale:0
+guiScale:3
 maxFps:120
 mipmapLevels:0
 narrator:0
@@ -44,7 +44,7 @@ toggleSprint:false
 darkMojangStudiosBackground:true
 hideLightningFlashes:false
 hideSplashTexts:false
-mouseSensitivity:0.5
+mouseSensitivity:0.23943661971830985
 damageTiltStrength:0.25528169014084506
 highContrast:false
 narratorHotkey:true

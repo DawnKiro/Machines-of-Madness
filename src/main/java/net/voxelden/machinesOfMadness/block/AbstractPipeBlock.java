@@ -4,17 +4,20 @@ import com.google.common.collect.ImmutableMap;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
+import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 
 import java.util.Map;
+import java.util.function.Predicate;
 
-public abstract class AbstractPipeBlock<T> extends Block {
+public abstract class AbstractPipeBlock extends Block {
     private static final VoxelShape CENTER_SHAPE = Block.createCuboidShape(4, 4, 4, 12, 12, 12);
     public static final EnumProperty<PipeConnection> DOWN_CONNECTION = EnumProperty.of("down", PipeConnection.class);
     public static final EnumProperty<PipeConnection> UP_CONNECTION = EnumProperty.of("up", PipeConnection.class);
@@ -32,6 +35,8 @@ public abstract class AbstractPipeBlock<T> extends Block {
     }
 
     abstract Map<EnumProperty<PipeConnection>, VoxelShape> getConnections();
+
+    abstract PipeConnection.Type getType();
 
     private Map<BlockState, VoxelShape> buildShapeMap() {
         ImmutableMap.Builder<BlockState, VoxelShape> builder = ImmutableMap.builder();
@@ -75,5 +80,60 @@ public abstract class AbstractPipeBlock<T> extends Block {
     @Override
     protected void appendProperties(net.minecraft.state.StateManager.Builder<Block, BlockState> builder) {
         builder.add(DOWN_CONNECTION, UP_CONNECTION, SOUTH_CONNECTION, NORTH_CONNECTION, WEST_CONNECTION, EAST_CONNECTION);
+    }
+
+    public enum PipeConnection implements StringIdentifiable {
+        NONE("none", false),
+        NORMAL("normal", true),
+        PUSH("push", true),
+        PULL("pull", true);
+
+        private final String name;
+        private final boolean isConnected;
+
+        PipeConnection(String name, boolean isConnected) {
+            this.name = name;
+            this.isConnected = isConnected;
+        }
+
+        public String toString() {
+            return this.asString();
+        }
+
+        @Override
+        public String asString() {
+            return this.name;
+        }
+
+        public boolean isConnected() {
+            return isConnected;
+        }
+
+        public enum Type implements StringIdentifiable {
+            ITEM("none", object -> object instanceof ItemStack),
+            FLUID("normal", object -> false),
+            ENERGY("push", object -> false);
+
+            private final String name;
+            private final Predicate<Object> predicate;
+
+            Type(String name, Predicate<Object> predicate) {
+                this.name = name;
+                this.predicate = predicate;
+            }
+
+            public String toString() {
+                return this.asString();
+            }
+
+            @Override
+            public String asString() {
+                return this.name;
+            }
+
+            public boolean canTransfer(Object object) {
+                return predicate.test(object);
+            }
+        }
     }
 }

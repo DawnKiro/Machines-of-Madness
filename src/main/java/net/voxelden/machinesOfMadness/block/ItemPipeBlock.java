@@ -1,13 +1,13 @@
 package net.voxelden.machinesOfMadness.block;
 
 import net.minecraft.block.Block;
-import net.minecraft.item.ItemStack;
+import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.util.shape.VoxelShape;
 
 import java.util.Map;
 
-public class ItemPipeBlock extends AbstractPipeBlock<ItemStack> {
+public class ItemPipeBlock extends AbstractPipeBlock {
     private static final Map<EnumProperty<PipeConnection>, VoxelShape> CONNECTIONS = Map.of(
             DOWN_CONNECTION,
             Block.createCuboidShape(4, 0, 4, 12, 4, 12),
@@ -24,11 +24,16 @@ public class ItemPipeBlock extends AbstractPipeBlock<ItemStack> {
     );
 
     public ItemPipeBlock(Settings settings) {
-        super(settings);
+        super(settings.pistonBehavior(PistonBehavior.BLOCK));
     }
 
     @Override
     Map<EnumProperty<PipeConnection>, VoxelShape> getConnections() {
         return CONNECTIONS;
+    }
+
+    @Override
+    PipeConnection.Type getType() {
+        return PipeConnection.Type.ITEM;
     }
 }

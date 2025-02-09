@@ -3,3 +3,8 @@
 /tp @s -192 99 291
 /kill @e[type=!minecraft:player]
 /setblock -166 75 313 machines_of_madness:item_pipe
+/give @s mm:item_pipe
+/give @s mm:template_multiblock
+/give @s mm:template_part
+/give @s mm:template_multiblock_machine
+/give @s mm:template_part
