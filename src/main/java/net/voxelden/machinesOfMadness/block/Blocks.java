@@ -18,7 +18,7 @@ public class Blocks {
     public static final SimpleMultiblock TEMPLATE_SIMPLE_MULTIBLOCK_MACHINE = register("template_multiblock_machine", true, new SimpleMachineMultiblock(
             AbstractBlock.Settings.create(),
             SimpleMultiblock.Settings.of(MachinesOfMadness.id("template"), 2, 2, 2, 8, 8, 8),
-            () -> new CheatMachine(1)
+            () -> new CheatMachine(0)
     ));
     public static final PartMultiblock TEMPLATE_PART_MULTIBLOCK = register("template_part", true, new PartMultiblock(AbstractBlock.Settings.create()));
 

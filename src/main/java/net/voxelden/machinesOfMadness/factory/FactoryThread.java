@@ -10,10 +10,10 @@ public class FactoryThread implements AutoCloseable {
     private static final ScheduledExecutorService EXECUTOR_SERVICE = Executors.newSingleThreadScheduledExecutor();
     private static final int TICK_RATE = 1000 / 20;
 
-    public static FactoryHolder FACTORIES;
+    public static Factory FACTORIES;
 
     public static void start(MinecraftServer server) {
-        FACTORIES = FactoryHolder.get(server);
+        FACTORIES = Factory.get(server);
         EXECUTOR_SERVICE.scheduleAtFixedRate(FactoryThread::tick, TICK_RATE, TICK_RATE, TimeUnit.MILLISECONDS);
     }
 

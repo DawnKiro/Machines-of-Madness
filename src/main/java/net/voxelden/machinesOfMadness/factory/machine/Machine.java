@@ -8,8 +8,4 @@ public abstract class Machine implements Tickable {
     public static final Codec<Machine> TYPE_CODEC = MachineRegistry.REGISTRY.getCodec().dispatch(Machine::codec, MapCodec::codec);
 
     public abstract MapCodec<? extends Machine> codec();
-
-    public interface Holder {
-        Machine getMachine();
-    }
 }
