@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1798f456-6803-4ee3-8f3d-73e0250365a5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/block/MachineBlock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/chunk/ChunkAttachment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/command/ChunkDataCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/command/Commands.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/util/Util.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/block/base/HideableBlock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/block/base/HideableBlockWithEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/block/base/SimpleMachineBlock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/block/entity/MachineBlockEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/client/render/MachineRenderer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/util/ImpossibleException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/machines-of-madness.accesswidener" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/checksums/md5-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/checksums/sha1-checksums.bin" afterDir="false" />
@@ -21,9 +23,28 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/loom-cache/minecraftMaven/net/minecraft/minecraft-merged-7787b014d4/1.20.1-net.fabricmc.yarn.1_20_1.1.20.1+build.10-v2/minecraft-merged-7787b014d4-1.20.1-net.fabricmc.yarn.1_20_1.1.20.1+build.10-v2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/loom-cache/minecraftMaven/net/minecraft/minecraft-merged-7787b014d4/1.20.1-net.fabricmc.yarn.1_20_1.1.20.1+build.10-v2/minecraft-merged-7787b014d4-1.20.1-net.fabricmc.yarn.1_20_1.1.20.1+build.10-v2.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/Machines-of-Madness.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/Machines-of-Madness.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/Machines-of-Madness.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/Machines-of-Madness.test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Server.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Server.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/net/voxelden/machinesOfMadness/MachinesOfMadness.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/net/voxelden/machinesOfMadness/MachinesOfMadness.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/net/voxelden/machinesOfMadness/block/AbstractPipeBlock$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/net/voxelden/machinesOfMadness/block/AbstractPipeBlock$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/net/voxelden/machinesOfMadness/block/AbstractPipeBlock$PipeConnection$Type.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/net/voxelden/machinesOfMadness/block/AbstractPipeBlock$PipeConnection$Type.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/net/voxelden/machinesOfMadness/block/AbstractPipeBlock$PipeConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/net/voxelden/machinesOfMadness/block/AbstractPipeBlock$PipeConnection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/net/voxelden/machinesOfMadness/block/AbstractPipeBlock.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/net/voxelden/machinesOfMadness/block/AbstractPipeBlock.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/net/voxelden/machinesOfMadness/block/Blocks.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/net/voxelden/machinesOfMadness/block/Blocks.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/net/voxelden/machinesOfMadness/block/ItemPipeBlock.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/net/voxelden/machinesOfMadness/block/ItemPipeBlock.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/net/voxelden/machinesOfMadness/block/SimpleMachineMultiblock.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/net/voxelden/machinesOfMadness/block/SimpleMachineMultiblock.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/net/voxelden/machinesOfMadness/block/multiblock/PartMultiblock.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/net/voxelden/machinesOfMadness/block/multiblock/PartMultiblock.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/net/voxelden/machinesOfMadness/block/multiblock/SimpleMultiblock.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/net/voxelden/machinesOfMadness/block/multiblock/SimpleMultiblock.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/net/voxelden/machinesOfMadness/client/MachinesOfMadnessClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/net/voxelden/machinesOfMadness/client/MachinesOfMadnessClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/net/voxelden/machinesOfMadness/factory/FactoryThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/net/voxelden/machinesOfMadness/factory/FactoryThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/net/voxelden/machinesOfMadness/factory/machine/CheatMachine.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/net/voxelden/machinesOfMadness/factory/machine/CheatMachine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/net/voxelden/machinesOfMadness/factory/machine/Machine.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/net/voxelden/machinesOfMadness/factory/machine/Machine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/fabric.mod.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/fabric.mod.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/machines-of-madness.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/machines-of-madness.mixins.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/config/fabric/indigo-renderer.properties" beforeDir="false" afterPath="$PROJECT_DIR$/run/config/fabric/indigo-renderer.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/logs/debug-1.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/run/logs/debug-1.log.gz" afterDir="false" />
@@ -36,6 +57,7 @@
       <change beforePath="$PROJECT_DIR$/run/saves/New World/DIM-1/data/raids.dat" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/DIM-1/data/raids.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World/DIM1/data/raids_end.dat" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/DIM1/data/raids_end.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World/data/raids.dat" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/data/raids.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/saves/New World/data/random_sequences.dat" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/data/random_sequences.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World/entities/r.-1.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/entities/r.-1.-1.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World/entities/r.-1.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/entities/r.-1.0.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World/entities/r.-1.1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/entities/r.-1.1.mca" afterDir="false" />
@@ -45,24 +67,32 @@
       <change beforePath="$PROJECT_DIR$/run/saves/New World/entities/r.1.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/entities/r.1.0.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World/level.dat" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/level.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World/level.dat_old" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/level.dat_old" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/saves/New World/poi/r.-1.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/poi/r.-1.-1.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World/region/r.-1.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/region/r.-1.-1.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World/region/r.-1.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/region/r.-1.0.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World/region/r.-1.1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/region/r.-1.1.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/saves/New World/region/r.-2.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/region/r.-2.-1.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World/region/r.0.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/region/r.0.-1.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World/region/r.0.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/region/r.0.0.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World/region/r.0.1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/region/r.0.1.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World/region/r.1.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/region/r.1.0.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/saves/New World/region/r.1.1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/region/r.1.1.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/saves/New World/session.lock" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/session.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/usercache.json" beforeDir="false" afterPath="$PROJECT_DIR$/run/usercache.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/MachinesOfMadness.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/MachinesOfMadness.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/block/AbstractPipeBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/block/pipe/AbstractPipeBlock.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/block/Blocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/block/Blocks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/block/SimpleMachineMultiblock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/block/SimpleMachineMultiblock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/factory/Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/factory/Factory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/factory/FactoryHolder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/block/ItemPipeBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/block/pipe/ItemPipeBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/block/MachineBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/block/base/MachineBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/block/SimpleMachineMultiblock.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/block/multiblock/PartMultiblock.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/block/multiblock/SimpleMultiblock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/block/base/Multiblock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/chunk/ChunkAttachment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/chunk/ChunkAttachment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/client/MachinesOfMadnessClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/client/MachinesOfMadnessClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/factory/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/factory/Connection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/factory/FactoryThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/factory/FactoryThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/factory/machine/CheatMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/factory/machine/CheatMachine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/factory/machine/Machine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/factory/machine/Machine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/util/TickableConcurrentHashMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/voxelden/machinesOfMadness/util/TickableConcurrentHashMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fabric.mod.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fabric.mod.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,9 +107,34 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Machines-of-Madness" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Machines-of-Madness" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Machines-of-Madness" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Machines-of-Madness" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="fabric" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -119,19 +174,66 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.Download Sources.executor": "Run",
-    "Gradle.Machines-of-Madness [:net.fabricmc.devlaunchinjector.Main.main()].executor": "Run",
-    "Gradle.Machines-of-Madness [genSourcesWithVineflower].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Build Machines-of-Madness.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Machines-of-Madness [:net.fabricmc.devlaunchinjector.Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Machines-of-Madness [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Machines-of-Madness [genSourcesWithVineflower].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Machines-of-Madness [genSources].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.Minecraft Client">
+    <configuration name="Machines-of-Madness [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="Machines-of-Madness [genSources]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="genSources" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -141,6 +243,12 @@
       <option name="filePath" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.Machines-of-Madness [build]" />
+        <item itemvalue="Gradle.Machines-of-Madness [genSources]" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

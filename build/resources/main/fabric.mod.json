@@ -24,5 +24,11 @@
     "fabricloader": ">=0.16.10",
     "fabric": "*",
     "minecraft": "1.20.1"
+  },
+  "accessWidener": "machines-of-madness.accesswidener",
+  "custom": {
+    "loom:injected_interfaces": {
+      "net/minecraft/class_846/class_849": ["net/voxelden/machinesOfMadness/impl/MachineChunkData"]
+    }
   }
 }

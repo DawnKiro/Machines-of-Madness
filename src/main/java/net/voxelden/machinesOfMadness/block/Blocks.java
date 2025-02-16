@@ -8,21 +8,17 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.voxelden.machinesOfMadness.MachinesOfMadness;
-import net.voxelden.machinesOfMadness.block.multiblock.PartMultiblock;
-import net.voxelden.machinesOfMadness.block.multiblock.SimpleMultiblock;
+import net.voxelden.machinesOfMadness.block.base.SimpleMachineBlock;
+import net.voxelden.machinesOfMadness.block.entity.MachineBlockEntity;
+import net.voxelden.machinesOfMadness.block.pipe.ItemPipeBlock;
 import net.voxelden.machinesOfMadness.factory.machine.CheatMachine;
 
 public class Blocks {
     public static final ItemPipeBlock ITEM_PIPE_BLOCK = register("item_pipe", true, new ItemPipeBlock(AbstractBlock.Settings.create()));
-    public static final SimpleMultiblock TEMPLATE_SIMPLE_MULTIBLOCK = register("template_multiblock", true, new SimpleMultiblock(AbstractBlock.Settings.create(), SimpleMultiblock.Settings.of(MachinesOfMadness.id("template"), 2, 2, 2, 8, 8, 8)));
-    public static final SimpleMultiblock TEMPLATE_SIMPLE_MULTIBLOCK_MACHINE = register("template_multiblock_machine", true, new SimpleMachineMultiblock(
-            AbstractBlock.Settings.create(),
-            SimpleMultiblock.Settings.of(MachinesOfMadness.id("template"), 2, 2, 2, 8, 8, 8),
-            () -> new CheatMachine(0)
-    ));
-    public static final PartMultiblock TEMPLATE_PART_MULTIBLOCK = register("template_part", true, new PartMultiblock(AbstractBlock.Settings.create()));
+    public static final SimpleMachineBlock TEMPLATE_SIMPLE_MACHINE_BLOCK = register("template_multiblock_machine", true, new SimpleMachineBlock(AbstractBlock.Settings.create(), () -> new CheatMachine(0)));
 
     public static void register() {
+        MachineBlockEntity.register();
     }
 
     private static <T extends Block> T register(String name, boolean withItem, T block) {

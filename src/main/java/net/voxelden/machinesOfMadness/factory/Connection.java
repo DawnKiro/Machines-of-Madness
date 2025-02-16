@@ -3,7 +3,7 @@ package net.voxelden.machinesOfMadness.factory;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.util.StringIdentifiable;
-import net.voxelden.machinesOfMadness.block.AbstractPipeBlock;
+import net.voxelden.machinesOfMadness.block.pipe.AbstractPipeBlock;
 import net.voxelden.machinesOfMadness.util.Tickable;
 
 import java.util.List;

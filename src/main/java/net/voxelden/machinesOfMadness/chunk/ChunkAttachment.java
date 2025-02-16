@@ -20,7 +20,10 @@ import java.util.function.Consumer;
 @SuppressWarnings("UnstableApiUsage")
 public record ChunkAttachment(HashMap<BlockPos, UUID> machines) {
     private static final Codec<ChunkAttachment> CODEC = RecordCodecBuilder.create(instance -> instance.group(Codec.unboundedMap(Uuids.STRING_CODEC, BlockPos.CODEC).fieldOf("machines").forGetter(ChunkAttachment::machinesFlipped)).apply(instance, ChunkAttachment::new));
-    public static final AttachmentType<ChunkAttachment> TYPE = AttachmentRegistry.<ChunkAttachment>builder().persistent(CODEC).initializer(ChunkAttachment::new).buildAndRegister(MachinesOfMadness.id("machines_data"));
+    public static final AttachmentType<ChunkAttachment> TYPE = AttachmentRegistry.<ChunkAttachment>builder()
+            .persistent(CODEC)
+            .initializer(ChunkAttachment::new)
+            .buildAndRegister(MachinesOfMadness.id("machines_data"));
 
     ChunkAttachment() {
         this(new HashMap<BlockPos, UUID>());
@@ -74,6 +77,12 @@ public record ChunkAttachment(HashMap<BlockPos, UUID> machines) {
 
     public static void setMachineID(World world, BlockPos pos, UUID machine) {
         ChunkAttachment.operate(world, pos, attachment -> attachment.machines().put(pos, machine));
+    }
+
+    public static Optional<UUID> removeMachineID(World world, BlockPos pos) {
+        ChunkAttachment attachment = get(world, pos);
+        set(world, pos, attachment);
+        return Optional.ofNullable(attachment.machines().remove(pos));
     }
 
     private HashMap<UUID, BlockPos> machinesFlipped() {
