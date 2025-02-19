@@ -5,6 +5,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtElement;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
@@ -15,15 +16,22 @@ import net.minecraft.util.math.BlockPos;
 import net.voxelden.machinesOfMadness.MachinesOfMadness;
 import net.voxelden.machinesOfMadness.chunk.ChunkAttachment;
 import net.voxelden.machinesOfMadness.factory.FactoryThread;
-import net.voxelden.machinesOfMadness.factory.machine.MachineRegistry;
+import net.voxelden.machinesOfMadness.machine.MachineRegistry;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class MachineBlockEntity extends BlockEntity {
     public static final List<Block> machineBlocks = new ArrayList<>();
+    private static final String nbtPathUUID = "id";
+    private static final String nbtPathType = "type";
+    private static final String nbtPathData = "data";
     public static BlockEntityType<MachineBlockEntity> INSTANCE;
+    private UUID uuid;
+    private Identifier type;
+    private NbtCompound data;
 
     public MachineBlockEntity(BlockPos pos, BlockState state) {
         super(INSTANCE, pos, state);
@@ -42,16 +50,38 @@ public class MachineBlockEntity extends BlockEntity {
     @Override
     public NbtCompound toInitialChunkDataNbt() {
         NbtCompound compound = new NbtCompound();
-        ChunkAttachment.getMachineID(world, pos).ifPresent(uuid -> FactoryThread.FACTORIES.getMachine(uuid)
-            .ifPresent(machine -> {
-                Identifier type = MachineRegistry.REGISTRY.getId(machine.codec());
-                if (type != null) {
-                    compound.putUuid("id", uuid);
-                    compound.putString("type", type.toString());
-                    compound.put("data", machine.getSyncedDataCompound());
-                }
-            })
-        );
+        ChunkAttachment.getMachineID(world, pos).ifPresent(uuid -> FactoryThread.FACTORIES.getMachine(uuid).ifPresent(machine -> {
+            Identifier type = MachineRegistry.REGISTRY.getId(machine.codec());
+            if (type != null) {
+                compound.putUuid(nbtPathUUID, uuid);
+                compound.putString(nbtPathType, type.toString());
+                compound.put(nbtPathData, machine.getSyncedDataCompound(new NbtCompound()));
+            }
+        }));
         return compound;
+    }
+
+    @Override
+    public void readNbt(NbtCompound nbt) {
+        super.readNbt(nbt);
+        if (nbt.containsUuid(nbtPathUUID)) uuid = nbt.getUuid(nbtPathUUID);
+        if (nbt.contains(nbtPathType, NbtElement.STRING_TYPE)) type = Identifier.tryParse(nbt.getString(nbtPathType));
+        if (nbt.contains(nbtPathData, NbtElement.COMPOUND_TYPE)) data = nbt.getCompound(nbtPathData);
+    }
+
+    public UUID getMachineUUID() {
+        return uuid;
+    }
+
+    public Identifier getMachineType() {
+        return type;
+    }
+
+    public NbtCompound getMachineData() {
+        return data;
+    }
+
+    public boolean isRenderable() {
+        return uuid != null && type != null && data != null;
     }
 }

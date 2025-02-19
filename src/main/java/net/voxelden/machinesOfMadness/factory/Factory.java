@@ -10,7 +10,8 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.Uuids;
 import net.minecraft.world.PersistentState;
 import net.voxelden.machinesOfMadness.MachinesOfMadness;
-import net.voxelden.machinesOfMadness.factory.machine.Machine;
+import net.voxelden.machinesOfMadness.machine.Connection;
+import net.voxelden.machinesOfMadness.machine.Machine;
 import net.voxelden.machinesOfMadness.util.Tickable;
 import net.voxelden.machinesOfMadness.util.TickableConcurrentHashMap;
 

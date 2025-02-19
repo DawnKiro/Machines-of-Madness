@@ -8,7 +8,7 @@ import net.minecraft.world.World;
 import net.voxelden.machinesOfMadness.block.entity.MachineBlockEntity;
 import net.voxelden.machinesOfMadness.chunk.ChunkAttachment;
 import net.voxelden.machinesOfMadness.factory.FactoryThread;
-import net.voxelden.machinesOfMadness.factory.machine.Machine;
+import net.voxelden.machinesOfMadness.machine.Machine;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;

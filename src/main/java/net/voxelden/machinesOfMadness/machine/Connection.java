@@ -1,4 +1,4 @@
-package net.voxelden.machinesOfMadness.factory;
+package net.voxelden.machinesOfMadness.machine;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

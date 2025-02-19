@@ -8,7 +8,7 @@ import net.voxelden.machinesOfMadness.block.Blocks;
 import net.voxelden.machinesOfMadness.chunk.ChunkAttachment;
 import net.voxelden.machinesOfMadness.command.Commands;
 import net.voxelden.machinesOfMadness.factory.FactoryThread;
-import net.voxelden.machinesOfMadness.factory.machine.MachineRegistry;
+import net.voxelden.machinesOfMadness.machine.MachineRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

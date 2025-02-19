@@ -11,7 +11,7 @@ import net.voxelden.machinesOfMadness.MachinesOfMadness;
 import net.voxelden.machinesOfMadness.block.base.SimpleMachineBlock;
 import net.voxelden.machinesOfMadness.block.entity.MachineBlockEntity;
 import net.voxelden.machinesOfMadness.block.pipe.ItemPipeBlock;
-import net.voxelden.machinesOfMadness.factory.machine.CheatMachine;
+import net.voxelden.machinesOfMadness.machine.CheatMachine;
 
 public class Blocks {
     public static final ItemPipeBlock ITEM_PIPE_BLOCK = register("item_pipe", true, new ItemPipeBlock(AbstractBlock.Settings.create()));
