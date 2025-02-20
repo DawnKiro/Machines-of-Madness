@@ -22,7 +22,12 @@ public class MachinesOfMadness implements ModInitializer {
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
     public static final Random RANDOM = new Random();
-    public static final String[] INIT_LOGS = {"Excess is not enough", "It's never enough POWAHHHHHH", "I bet I can get it over 9000", "A MASSIVE ERROR HAS OCCURRED\n\t\tjust kidding ;3"};
+    public static final String[] INIT_LOGS = {
+            "Excess is not enough",
+            "It's never enough POWAHHHHHH",
+            "I bet I can get it over 9000",
+            "A MASSIVE ERROR HAS OCCURRED\n\t\tjust kidding ;3"
+    };
 
     public static Identifier id(String name) {
         return Identifier.of(MOD_ID, name);

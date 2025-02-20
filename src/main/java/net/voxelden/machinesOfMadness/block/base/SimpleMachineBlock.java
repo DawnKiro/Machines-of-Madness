@@ -35,7 +35,7 @@ public class SimpleMachineBlock extends HideableBlockWithEntity implements Machi
     @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         super.onStateReplaced(state, world, pos, newState, moved);
-        ChunkAttachment.removeMachineID(world, pos).ifPresent(uuid -> FactoryThread.FACTORIES.getMachines().remove(uuid));
+        if (!newState.isOf(state.getBlock())) ChunkAttachment.removeMachineID(world, pos).ifPresent(uuid -> FactoryThread.FACTORIES.getMachines().remove(uuid));
     }
 
     @Override
