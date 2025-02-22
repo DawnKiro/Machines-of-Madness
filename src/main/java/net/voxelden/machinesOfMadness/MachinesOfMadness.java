@@ -3,6 +3,7 @@ package net.voxelden.machinesOfMadness;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.util.Identifier;
 import net.voxelden.machinesOfMadness.block.Blocks;
 import net.voxelden.machinesOfMadness.chunk.ChunkAttachment;
@@ -56,6 +57,7 @@ public class MachinesOfMadness implements ModInitializer {
         CommandRegistrationCallback.EVENT.register(Commands::register);
 
         ServerLifecycleEvents.SERVER_STARTED.register(FactoryThread::start);
-        ServerLifecycleEvents.SERVER_STOPPING.register(server -> FactoryThread.stop());
+        ServerTickEvents.START_SERVER_TICK.register(FactoryThread::heartbeat);
+        ServerLifecycleEvents.SERVER_STOPPED.register(server -> FactoryThread.stop());
     }
 }

@@ -11,7 +11,8 @@ import java.util.List;
 
 public class Commands {
     private static final List<Function3<CommandDispatcher<ServerCommandSource>, CommandRegistryAccess, CommandManager.RegistrationEnvironment, LiteralArgumentBuilder<ServerCommandSource>>> commandRegistrars = List.of(
-            ChunkDataCommand::register
+            ChunkDataCommand::register,
+            MachineCommand::register
     );
 
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess registryAccess, CommandManager.RegistrationEnvironment environment) {

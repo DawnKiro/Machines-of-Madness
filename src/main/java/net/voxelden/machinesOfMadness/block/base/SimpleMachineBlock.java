@@ -1,47 +1,47 @@
 package net.voxelden.machinesOfMadness.block.base;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.voxelden.machinesOfMadness.block.entity.MachineBlockEntity;
 import net.voxelden.machinesOfMadness.chunk.ChunkAttachment;
 import net.voxelden.machinesOfMadness.factory.FactoryThread;
 import net.voxelden.machinesOfMadness.machine.Machine;
-import org.jetbrains.annotations.Nullable;
+import net.voxelden.machinesOfMadness.machine.PositionalMachine;
+import net.voxelden.machinesOfMadness.util.Position;
 
 import java.util.Optional;
 import java.util.UUID;
-import java.util.function.Supplier;
 
 public class SimpleMachineBlock extends HideableBlockWithEntity implements MachineBlock {
-    private final Supplier<Machine> builder;
+    private final PositionalMachine.Builder builder;
 
-    public SimpleMachineBlock(Settings settings, Supplier<Machine> machineBuilder) {
+    public SimpleMachineBlock(Settings settings, PositionalMachine.Builder machineBuilder) {
         super(settings, MachineBlockEntity::new);
         MachineBlockEntity.machineBlocks.add(this);
         builder = machineBuilder;
     }
 
     @Override
-    public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
-        UUID uuid = FactoryThread.FACTORIES.machineUUID();
-        FactoryThread.FACTORIES.getMachines().put(uuid, getMachine(world, pos));
-        ChunkAttachment.operate(world, pos, attachment -> attachment.machines().put(pos, uuid));
-    }
-
-    @SuppressWarnings("deprecation")
-    @Override
-    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
-        super.onStateReplaced(state, world, pos, newState, moved);
-        if (!newState.isOf(state.getBlock())) ChunkAttachment.removeMachineID(world, pos).ifPresent(uuid -> FactoryThread.FACTORIES.getMachines().remove(uuid));
+    public void onBlockAdded(BlockState state, World world, BlockPos blockPos, BlockState oldState, boolean notify) {
+        if (!world.isClient()) {
+            UUID uuid = FactoryThread.FACTORY.machineUUID();
+            Position pos = Position.of(world, blockPos);
+            FactoryThread.FACTORY.getMachines().put(uuid, getMachine(pos));
+            ChunkAttachment.setMachineID(pos, uuid);
+        }
     }
 
     @Override
-    public Machine getMachine(World world, BlockPos pos) {
-        Optional<UUID> id = ChunkAttachment.getMachineID(world, pos);
-        if (id.isPresent()) return FactoryThread.FACTORIES.getMachine(id.get()).orElseGet(builder);
-        return builder.get();
+    public void onStateReplaced(BlockState state, World world, BlockPos blockPos, BlockState newState, boolean moved) {
+        super.onStateReplaced(state, world, blockPos, newState, moved);
+        if (!newState.isOf(state.getBlock())) ChunkAttachment.removeMachineID(Position.of(world, blockPos)).ifPresent(uuid -> FactoryThread.FACTORY.getMachines().remove(uuid));
+    }
+
+    @Override
+    public Machine getMachine(Position pos) {
+        Optional<UUID> id = ChunkAttachment.getMachineID(pos);
+        if (id.isPresent()) return FactoryThread.FACTORY.getMachine(id.get()).orElse(builder.create(pos));
+        return builder.create(pos);
     }
 }
