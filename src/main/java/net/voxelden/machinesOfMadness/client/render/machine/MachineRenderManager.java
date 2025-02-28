@@ -25,6 +25,7 @@ public class MachineRenderManager implements BlockEntityRenderer<MachineBlockEnt
     public static void register() {
         BlockEntityRendererFactories.register(MachineBlockEntity.INSTANCE, MachineRenderManager::new);
         renderers.put(MachineRegistry.TEMPLATE_MACHINE, new CheatMachineRenderer());
+        renderers.put(MachineRegistry.BASIC_WATERWHEEL_MACHINE, new WaterwheelMachineRenderer());
     }
 
     @Override

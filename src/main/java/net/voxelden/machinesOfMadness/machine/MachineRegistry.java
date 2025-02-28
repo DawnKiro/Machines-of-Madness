@@ -12,6 +12,7 @@ public class MachineRegistry {
     public static final Registry<MapCodec<? extends Machine>> REGISTRY = FabricRegistryBuilder.createSimple(KEY).buildAndRegister();
 
     public static final Identifier TEMPLATE_MACHINE = register("template", CheatMachine.CODEC);
+    public static final Identifier BASIC_WATERWHEEL_MACHINE = register("basic_waterwheel", BasicWaterwheelMachine.CODEC);
 
     public static void register() {}
 

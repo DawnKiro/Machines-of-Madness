@@ -15,6 +15,7 @@ import net.voxelden.machinesOfMadness.block.entity.MachineBlockEntity;
 import net.voxelden.machinesOfMadness.block.pipe.ItemPipeBlock;
 import net.voxelden.machinesOfMadness.machine.CheatMachine;
 import net.voxelden.machinesOfMadness.machine.PositionalMachine;
+import net.voxelden.machinesOfMadness.machine.BasicWaterwheelMachine;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -22,6 +23,7 @@ import java.util.function.Function;
 public class Blocks {
     public static final ItemPipeBlock ITEM_PIPE_BLOCK = register("item_pipe", true, ItemPipeBlock::new);
     public static final SimpleMachineBlock TEMPLATE_SIMPLE_MACHINE_BLOCK = registerMachineBlock("template_multiblock_machine", SimpleMachineBlock::new, CheatMachine::new);
+    public static final SimpleMachineBlock BASIC_WATER_WHEEL_BLOCK = registerMachineBlock("basic_waterwheel", SimpleMachineBlock::new, BasicWaterwheelMachine::new);
 
     public static void register() {
         MachineBlockEntity.register();
